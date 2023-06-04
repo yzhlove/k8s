@@ -1,0 +1,7 @@
+FROM alpine:latest
+ENV VERSION=1.0 DEBUG=on \
+    NAME="Happy Feet"
+ENV AUTH "yurisa"
+ENV GOVERSION=1.20.4 
+
+CMD echo "$VERSION,$NAME,$DEBUG,$AUTH,$GOVERSION"
