@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx
+      imagePullPolicy: IfNotPresent
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+      lifecycle:
+        postStart:
+          exec:
+            command: [ "/bin/sh","-c","echo nginx is running > /usr/share/message" ]
+        preStop:
+          exec:
+            command: ["/bin/sh","-c","curl http://127.0.0.1:80; sleep 5s"]
+  restartPolicy: Always
