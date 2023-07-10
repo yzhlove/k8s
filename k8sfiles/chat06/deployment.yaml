@@ -8,6 +8,7 @@ metadata:
   name: nginx
   namespace: yurisa
 spec:
+  minReadySeconds: 12
   replicas: 3
   selector:
     matchLabels:
